@@ -9,6 +9,9 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <config-file platform="ios" target="*-Info.plist" parent="NSCameraUsageDescription" overwrite="true">
+        <string>Allow the app to use your camera</string>
+    </config-file>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />

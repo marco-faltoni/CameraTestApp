@@ -1,21 +1,4 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
@@ -24,50 +7,44 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(to bottom, #A7A7A7 0%, #E4E4E4 51%);
-    font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
+    background-color: #252d3d;
+    /* background-image:linear-gradient(to bottom, #A7A7A7 0%, #E4E4E4 51%); */
+    font-family: 'Lato', sans-serif, -apple-system, -apple-system-font, sans-serif;
     font-size:12px;
     height:100vh;
     margin:0px;
     padding:0px;
     /* Padding to avoid the "unsafe" areas behind notches in the screen */
     padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
-    text-transform:uppercase;
     width:100%;
 }
 
-/* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-                                   /* offset horizontal: half of text area width */
+    height: 100vh;
 }
 
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
+#deviceready {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85%;
 }
+
+#deviceready.ready .event.listening { display: none; }
+#deviceready.ready .event.received { display: block; }
+
 
 h1 {
+    width: 60%;
+    font-family: 'Lobster Two', cursive;
     font-size:24px;
-    font-weight:normal;
-    margin:0px;
+    margin:0px auto;
     overflow:visible;
     padding:0px;
     text-align:center;
+    color: whitesmoke;
 }
 
 .event {
@@ -88,8 +65,153 @@ h1 {
     display:none;
 }
 
-#deviceready.ready .event.listening { display: none; }
-#deviceready.ready .event.received { display: block; }
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+.flat-anim
+{
+    display: block;
+    width: 185px;
+    height: 204px;
+    background-color: #ecf0f1;
+    border-radius: 42px;
+    position: relative;
+    margin-top: 3rem;
+    margin-bottom: 9rem;
+}
+
+.flat-anim:before
+{
+    content: "";
+    background-color: #e67e22;
+    width: 17px;
+    height: 17px;
+    border-radius: 26px;
+    position: absolute;
+    top: 19px;
+    left: 19px;
+}
+.flat-anim:after
+{
+    content: "";
+    background-color: #68b5f1;
+    width: 30px;
+    height: 15px;
+    border-radius: 10px;
+    position: absolute;
+    top: 17px;
+    right: 22px;
+}
+
+.eye
+{
+	width: 22px;
+    height: 22px;
+    border-radius: 37px;
+    background-color: #243e6e;
+    display: block;
+    margin: 50px auto 0;
+    z-index: 20;
+    position: relative;
+    -webkit-box-shadow: 0px	0px		0	14px	#3e5489,
+    0 	0 		0 	23px 	#1c3666,
+    0 	0 		0 	35px 	#ecf0f1,
+    0 	10px 	0 	35px 	rgba(0,0,0,0.2);
+}
+.eye:before
+{
+    content: "";
+    background-color: #a3bfd5;
+    width: 20px;
+    height: 20px;
+    border-radius: 30px;
+    position: absolute;
+    top: -11px;
+    left: -13px;
+}
+.eye:after
+{
+    content: "";
+    background-color: #6078a3;
+    width: 10px;
+    height: 10px;
+    border-radius: 16px;
+    position: absolute;
+    top: 18px;
+    left: 19px;
+}
+
+.bottom
+{
+    width: 185px;
+    height: 90px;
+    display: block;
+    z-index: 10;
+    background-color: #e67e22;
+    border-radius: 0 0 38px 38px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 10px solid #dd660e;
+    -webkit-box-shadow: inset 0 -10px 0 0 #db640e;
+}
+.bottom:before
+{
+	content: "";
+	background-color: #282e3a;
+    width: 119px;
+    height: 21px;
+	display: block;
+	margin:14px auto 0 auto;
+}
+.bottom:after{
+    content: "";
+    position: absolute;
+    top: 26px;
+    left: 57px;
+    width: 70px;
+    height: 27px;
+    display: block;
+    background-color: #ecf0f1;
+    /* border-top: 16px solid #c3d1dd; */
+    /* border-bottom: 14px solid #db640e; */
+    -webkit-box-shadow: 0 14px 0 0 #db640e,
+    0 -16px 0 0 #c3d1dd;
+    -moz-box-shadow: 0 14px 0 0 #db640e,
+    0 -16px 0 0 #c3d1dd;
+    box-shadow: 0 10px 0 0 #db640e,
+    0 -12px 0 0 #c3d1dd;
+}
+
+button {
+    width: 11rem;
+    height: 3rem;
+    background: none;
+    border: none;
+    background-color: whitesmoke;
+    border-radius: 25px;
+    color: #282e3a;
+}
+
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+    body {
+        background-color:#282e3a;
+        /* background-image:linear-gradient(to bottom, #585858 0%, #1B1B1B 51%); */
+    }
+}
 
 @keyframes fade {
     from { opacity: 1.0; }
@@ -97,14 +219,169 @@ h1 {
     to { opacity: 1.0; }
 }
 
-.blink {
-    animation:fade 3000ms infinite;
-    -webkit-animation:fade 3000ms infinite;
+/* Animation */
+
+.flat-anim {
+    -webkit-animation: flatAnimation 5s infinite;
 }
 
-
-@media screen and (prefers-color-scheme: dark) {
-    body {
-        background-image:linear-gradient(to bottom, #585858 0%, #1B1B1B 51%);
+@-webkit-keyframes flatAnimation {
+    0% {
+        -webkit-transform: rotate(50deg) scale(0.5); 
+    }
+    13% {
+        -webkit-transform: rotate(-22deg) scale(1.2); 
+    }
+    20% {
+        -webkit-transform: rotate(0) scale(1); 
+    }
+    95% {
+        -webkit-transform: rotate(0) scale(1); 
+    }
+    100% {
+        -webkit-transform: rotate(50deg) scale(0.5); 
     }
 }
+
+.eye,
+.flat-anim:before,
+.flat-anim:after {
+-webkit-animation: eyeAnimation 5s infinite;
+}
+.flat-anim:before{
+    -webkit-animation-delay: 50ms;
+    -moz-animation-delay: 50ms;
+    -o-animation-delay: 50ms;
+    animation-delay: 50ms;
+}
+.flat-anim:after{
+    -webkit-animation-delay: 150ms;
+    -moz-animation-delay: 150ms;
+    -o-animation-delay: 150ms;
+    animation-delay: 150ms;
+}
+
+@-webkit-keyframes eyeAnimation {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0.1); 
+    }
+    12% {
+        opacity: 0;
+        -webkit-transform: scale(0.1);
+    }
+    13% {
+        opacity: 1;
+        -webkit-transform: scale(0.1);
+    }
+    20% {
+        opacity: 1;
+        -webkit-transform: scale(1.4); 
+    }
+    25% {
+        -webkit-transform: scale(1); 
+    }
+    95% {
+        -webkit-transform: scale(1); 
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(0.1); 
+    }
+}
+
+.bottom:before {
+    -webkit-animation: bottomAnimation 5s infinite;
+}
+
+
+@-webkit-keyframes bottomAnimation {
+    0% {
+        opacity: 0;
+        width: 0;
+    }
+    20% {
+        opacity: 0;
+        width: 0;
+    }
+    21% {
+        opacity: 0;
+        width: 0;
+    }
+    22% {
+        opacity: 1;
+        width: 8px;
+    }
+    25% {
+        opacity: 1;
+        width: 165px;
+    }
+    26% {
+        opacity: 1;
+        width: 140px;
+    }
+    95% {
+        width: 140px;
+        opacity: 1;
+    }
+    96% {
+        opacity: 0;
+        width: 0;
+    }
+    100% {
+        opacity: 0;
+        width: 0;
+    }
+}
+
+.bottom:after {
+    -webkit-animation: bottomAfterAnimation 5s infinite;
+}
+
+@-webkit-keyframes bottomAfterAnimation {
+    0% {
+        opacity: 0;
+        height: 0;
+        border: 0;
+    }
+    25% {
+        opacity: 0;
+        height: 0;
+        border: 0;
+    }
+    26% {
+        opacity: 1;
+        border: 0;
+        height: 0;
+    }
+    26% {
+        opacity: 1;
+        border: 0;
+        height: 0;
+        border-top-width: 2px;
+    }
+    28% {
+        opacity: 1;
+        border: 0;
+        height: 0;
+        border-top-width: 16px;
+    }
+    28% {
+        opacity: 1;
+        height: 40px;
+        border-top-width: 16px;
+        border-bottom-width: 14px;
+    }
+    95% {
+        opacity: 1;
+        height: 40px;
+        border-top-width: 16px;
+        border-bottom-width: 14px;
+    }
+    100% {
+        opacity: 0;
+        height: 0;
+        border: 0;
+    }
+}  

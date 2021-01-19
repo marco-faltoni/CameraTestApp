@@ -24,8 +24,9 @@
       "cordova-plugin-camera-preview": {}
     },
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
-  }
+  },
+  "dependencies": {}
 }
