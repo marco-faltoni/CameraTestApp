@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        
+
         <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
 
         <meta http-equiv="Content-Security-Policy" content="
@@ -22,19 +22,15 @@
     </head>
     <body data-barba="wrapper">
         
-        <div data-barba="container" data-barba-namespace="splash" class="app" >
+        <div data-barba="container" data-barba-namespace="camera" class="app" >
             <div id="deviceready">
                 <h1>Cordova CameraPreview App</h1>
+
+                <a href="../index.html"><h1>Back</h1></a> 
+                
+                <button id="camerastart">Camera</button></a>
                 <!-- <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p> -->
-
-                <div class="flat-anim animation"  class="blink">
-                    <span class="eye"></span>
-                    <span class="bottom"></span>
-                </div>
-
-                <a id="link" href="./camera/index.html"><button>GO</button></a>
-                
             </div>
         </div>
         
@@ -42,6 +38,8 @@
         <script type="text/javascript" src="cordova.js"></script>
         <!-- <script type="text/javascript" src="CameraPreview.js"></script> -->
         <script src="https://unpkg.com/@barba/core"></script>
-        <script src="js/index.js"></script>
+        <script src="../js/index.js"></script>
+        <!-- <script src="../www/js/index.js"></script> -->
+        
     </body>
 </html>

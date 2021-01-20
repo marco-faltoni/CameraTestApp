@@ -30,6 +30,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 85%;
+    z-index: 100;
 }
 
 #deviceready.ready .event.listening { display: none; }

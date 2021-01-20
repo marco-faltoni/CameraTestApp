@@ -11,7 +11,6 @@ function onDeviceReady() {
     console.log('Ready - Running cordova-' + cordova.platformId + '@' + cordova.version);
 
     document.getElementById('deviceready').classList.add('ready');
-    
 
     // transition page
     barba.init({
@@ -23,9 +22,37 @@ function onDeviceReady() {
                     
                 },
                 beforeLeave(){
+                    console.log('leave');
+                }
+            },
+            {
+                namespace: 'camera',
+                beforeEnter() {
+                    console.log('enter-camera');
+
+                    let btncamera = document.getElementById("camerastart");
+
+                    btncamera.addEventListener("click", function(){
+                        console.log('enter-camera');
+                        CameraPreview.startCamera({
+                            x: 0, 
+                            y: 80, 
+                            width: window.screen.width, 
+                            height: window.screen.height - 210, 
+                            camera: "back", 
+                            tapPhoto: true, 
+                            previewDrag: false, 
+                            toBack: false
+                        });
+                        
+                    });
+                },
+                beforeLeave(){
                     
                 }
-            }
+            },
         ],
     });
+
+
 }

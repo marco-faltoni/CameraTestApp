@@ -9,20 +9,38 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="Hostname" value="localhost" />
+    <!-- <preference name="NativeXHRLogging" value="full|none" />
+    <preference name="AllowUntrustedCerts"  value="true|false" />
+    <preference name="InterceptRemoteRequests" value="all|secureOnly" /> -->
+    <!-- <preference name="CustomUserAgent" value="my_custom_user_agent" />
+    <preference name="allowFileAccessFromFileURLs" value="true|false" />
+    <preference name="allowUniversalAccessFromFileURLs" value="true|false" /> -->
     <config-file platform="ios" target="*-Info.plist" parent="NSCameraUsageDescription" overwrite="true">
         <string>Allow the app to use your camera</string>
     </config-file>
+
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
+
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <preference name="WKWebViewOnly" value="true"/>
     </platform>
+
+    <feature name="CDVWKWebViewEngine">
+        <param name="ios-package" value="CDVWKWebViewEngine" />
+    </feature>
+
+    <preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" /> 
+
 </widget>
