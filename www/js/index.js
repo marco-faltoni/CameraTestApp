@@ -32,11 +32,19 @@ function onDeviceReady() {
             {
                 namespace: 'camera',
                 beforeEnter() {
+                    console.log(location.pathname);
+                    // CameraPreview.show();
                     // console.log('enter-camera');
                     // catturo gli elementi che mi servono
                     let btncamera = document.querySelector(".takephoto");
                     let btnswitch = document.querySelector(".switch");
                     let photoTaked = document.querySelector(".taked");
+                    let icons = document.querySelector(".icons");
+                    let iconMini = document.querySelector(".icon-mini");
+                    let iconsNext = document.querySelector(".icons-next");
+                    let iconBack = document.querySelector(".icon-back");
+                    let iconSend = document.querySelector(".icon-send");
+                    let iconFlash = document.querySelector(".flash");
 
                     // faccio partire la camera quando entro nella pagina
                     CameraPreview.startCamera({
@@ -52,14 +60,51 @@ function onDeviceReady() {
                         storeToFile: false,
                     });
 
+                    CameraPreview.setFlashMode(iconFlash.value);
+
                     // rimango in ascolto del click sul bottone camera
                     btncamera.addEventListener("click", function(){
+                        photoTaked.src = '';
+                        icons.classList.add('none');
+                        iconMini.classList.add('none');
                         CameraPreview.takePicture(function(imgData){
+                            
                             photoTaked.src = 'data:image/jpeg;base64,' + imgData;
-                            data = imgData;
-                            CameraPreview.hide();
-                            console.log(data);
+                            // console.log(data);
+                            // console.log(window.location);
                         });
+                        CameraPreview.hide();
+                        iconsNext.classList.remove('none');
+                    });
+
+                    iconBack.addEventListener("click", function(){
+                        CameraPreview.show();
+                        icons.classList.remove('none');
+                        iconMini.classList.remove('none');
+                        iconsNext.classList.add('none');
+                    });
+
+                    iconSend.addEventListener("click", function(){
+                        setTimeout(() => {
+                            alert ('Image Sent!');
+                            CameraPreview.show();
+                            icons.classList.remove('none');
+                            iconMini.classList.remove('none');
+                            iconsNext.classList.add('none');
+                        }, 2000);
+                        
+                    });
+
+                    iconFlash.addEventListener("click", function(){
+                        if (this.value === 'on') {
+                            this.value = 'off';
+                            this.src = '../assets/flashOff.svg';
+                            CameraPreview.setFlashMode('off');
+                        } else {
+                            this.value = 'on';
+                            this.src = '../assets/flashOn.svg';
+                            CameraPreview.setFlashMode('on');
+                        }
                     });
 
                     // scelgo se utilizzare la camera principale o frontale
@@ -72,17 +117,6 @@ function onDeviceReady() {
                 beforeLeave(){
                     CameraPreview.stopCamera();
                     body.classList.remove('black');
-                }
-            },
-            {
-                namespace: 'postshot',
-                beforeEnter() {
-                    // console.log('enter-post');
-                    console.log(data);
-                },
-                beforeLeave(){
-                    // console.log('leave');
-                    
                 }
             },
         ],

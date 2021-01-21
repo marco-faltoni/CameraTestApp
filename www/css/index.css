@@ -27,6 +27,7 @@ body {
     height: 100vh;
 }
 
+
 #deviceready {
     position: relative;
     display: flex;
@@ -37,7 +38,7 @@ body {
     z-index: 100;
 }
 
-#deviceready-two {
+#deviceready-two, #deviceready-three {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -69,12 +70,23 @@ body {
     align-items: center;
     height: 10%;
 }
+.icons-next {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%;
+}
 
-.icon-main {
+.none {
+    display: none;
+}
+
+.icon-main, .icon-send {
     height: 65px;
 }
 
-.icon {
+.icon, .icon-down, .icon-back {
     height: 30px;
 }
 
@@ -222,9 +234,12 @@ button {
     height: 3rem;
     background: none;
     border: none;
-    background-color: whitesmoke;
+    border: 2px solid whitesmoke;
     border-radius: 25px;
-    color: #282e3a;
+    color: whitesmoke;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bolder;
 }
 
 
