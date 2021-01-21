@@ -45,6 +45,7 @@ function onDeviceReady() {
                     let iconBack = document.querySelector(".icon-back");
                     let iconSend = document.querySelector(".icon-send");
                     let iconFlash = document.querySelector(".flash");
+                    let iconLoad = document.querySelector(".loader");
 
                     // faccio partire la camera quando entro nella pagina
                     CameraPreview.startCamera({
@@ -56,11 +57,11 @@ function onDeviceReady() {
                         tapPhoto: false, 
                         previewDrag: false, 
                         toBack: false,
-                        tapFocus: false,
+                        tapFocus: true,
                         storeToFile: false,
                     });
 
-                    CameraPreview.setFlashMode(iconFlash.value);
+                    CameraPreview.setFlashMode('on');
 
                     // rimango in ascolto del click sul bottone camera
                     btncamera.addEventListener("click", function(){
@@ -85,27 +86,39 @@ function onDeviceReady() {
                     });
 
                     iconSend.addEventListener("click", function(){
+                        iconSend.classList.add('none');
+                        iconLoad.classList.remove('none');
+                        setTimeout(() => {
+                            iconLoad.classList.add('none');
+                            iconSend.classList.remove('none');
+                        }, 3000);
                         setTimeout(() => {
                             alert ('Image Sent!');
                             CameraPreview.show();
                             icons.classList.remove('none');
                             iconMini.classList.remove('none');
                             iconsNext.classList.add('none');
-                        }, 2000);
+                        }, 3300);
                         
                     });
 
-                    iconFlash.addEventListener("click", function(){
-                        if (this.value === 'on') {
-                            this.value = 'off';
+                    iconFlash.addEventListener("click", changeValue);
+
+                    function changeValue(e){
+                        // console.log(iconFlash.value);
+                        
+                        if (iconFlash.value === 'on' || iconFlash.value === undefined) {
+                            
+                            iconFlash.value = 'off';
                             this.src = '../assets/flashOff.svg';
                             CameraPreview.setFlashMode('off');
                         } else {
-                            this.value = 'on';
+                            
+                            iconFlash.value = 'on';
                             this.src = '../assets/flashOn.svg';
                             CameraPreview.setFlashMode('on');
                         }
-                    });
+                    }
 
                     // scelgo se utilizzare la camera principale o frontale
                     btnswitch.addEventListener("click", function(){
