@@ -4,10 +4,11 @@
 }
 
 body {
+    position: relative;
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color: #252d3d;
+    background-color: #272358;
     /* background-image:linear-gradient(to bottom, #A7A7A7 0%, #E4E4E4 51%); */
     font-family: 'Lato', sans-serif, -apple-system, -apple-system-font, sans-serif;
     font-size:12px;
@@ -17,6 +18,14 @@ body {
     /* Padding to avoid the "unsafe" areas behind notches in the screen */
     padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
     width:100%;
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #272358;
+    z-index: 0;
 }
 
 .black {
@@ -80,6 +89,14 @@ body {
 
 .none {
     display: none;
+}
+
+.loading {
+    opacity: 0.2;
+}
+
+.no-touch {
+    pointer-events: none;
 }
 
 .icon-main, .icon-send {
@@ -298,11 +315,11 @@ img:active {
     }
 }
 
-/* @media screen and (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
     body {
-        background-color:#282e3a;
+        background-color:#272358;
     }
-} */
+}
 
 
 

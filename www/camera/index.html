@@ -21,11 +21,11 @@
         <title>Cordova Camera Test App</title>
     </head>
     <body data-barba="wrapper">
+
+        <div id="particles-js" class=""></div>
         
         <div data-barba="container" data-barba-namespace="camera" class="app" >
-
             <div id="deviceready-two">
-
                 <div class="menu">
                     <img src="../assets/switch.svg" alt="switch" class="icon-mini switch">
                     <h1 id="title">CameraPreview App</h1>
@@ -36,11 +36,11 @@
                 </div>
                 
                 <div class="icons">
-                    <a href="../index.html"><img src="../assets/back.svg" alt="back" class="icon"></a>
+                    <a href="../index.html" value="aaa"><img src="../assets/back.svg" alt="back" class="icon"></a>
 
                     <img src="../assets/Camera.svg" alt="camera" class="icon-main takephoto">
 
-                    <img src="../assets/flashOn.svg" alt="flash" class="icon flash" value="on" >
+                    <img src="../assets/flashAuto.svg" alt="flash" class="icon flash auto" data-flash="auto" >
                 </div>
 
                 <div class="icons-next none">
@@ -56,7 +56,6 @@
 
                     <img src="../assets/close.svg" alt="back" class="icon-back" >
                 </div>
-                
             </div>
         </div>
         
@@ -65,6 +64,5 @@
         <!-- <script type="text/javascript" src="CameraPreview.js"></script> -->
         <script src="https://unpkg.com/@barba/core"></script>
         <script src="../js/index.js"></script>
-        
     </body>
 </html>

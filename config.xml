@@ -10,15 +10,16 @@
     <content src="index.html" />
     <access origin="*" />
     <preference name="Hostname" value="localhost" />
-    <!-- <preference name="NativeXHRLogging" value="full|none" />
-    <preference name="AllowUntrustedCerts"  value="true|false" />
-    <preference name="InterceptRemoteRequests" value="all|secureOnly" /> -->
-    <!-- <preference name="CustomUserAgent" value="my_custom_user_agent" />
-    <preference name="allowFileAccessFromFileURLs" value="true|false" />
-    <preference name="allowUniversalAccessFromFileURLs" value="true|false" /> -->
+    <preference name="iosPersistentFileLocation" value="Library" />
+    
     <config-file platform="ios" target="*-Info.plist" parent="NSCameraUsageDescription" overwrite="true">
         <string>Allow the app to use your camera</string>
     </config-file>
+
+<!--     
+    <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+        <string>need to photo library access to save pictures there</string>
+    </edit-config> -->
 
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
