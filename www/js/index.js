@@ -152,6 +152,7 @@ function onDeviceReady() {
                     }
 
                     function sendImage(){
+                        event.preventDefault();
                         iconSend.classList.add('none');
                         iconLoad.classList.remove('none');
                         container.classList.add('no-touch');

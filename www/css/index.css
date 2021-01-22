@@ -99,9 +99,10 @@ body {
     pointer-events: none;
 }
 
-.icon-main, .icon-send {
+.icon-main, .icon-send, input {
     height: 65px;
 }
+
 
 .icon, .icon-down, .icon-back {
     height: 33px;
