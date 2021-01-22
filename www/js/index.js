@@ -20,6 +20,14 @@ function onDeviceReady() {
                 namespace: 'splash',
                 beforeEnter() {
                     // console.log('enter');
+                    const revealText = document.querySelector('.maintext');
+                    const link = document.getElementById('link');
+                    
+                    const slideTl = gsap.timeline({
+                        defaults: {duration:1.5, ease: 'power2.inOut'}
+                    });
+                    slideTl.fromTo(revealText, {y: '-300%'}, {y: '0'}, '0');
+                    slideTl.fromTo(link, {x: '-200%'}, {x: '0'}, '-=1');
                 },
                 beforeLeave(){
                     let background = document.getElementById("particles-js");
@@ -31,6 +39,17 @@ function onDeviceReady() {
             {
                 namespace: 'camera',
                 beforeEnter() {
+                    const iconTiny = document.querySelector('.icon-mini');
+                    const icons = document.querySelector('.icons');
+                    const tit = document.getElementById('title');
+
+                    const slideTl = gsap.timeline({
+                        defaults: {duration:1.5, ease: 'power2.inOut'}
+                    });
+                    slideTl.fromTo(tit, {y: '-300%'}, {y: '0'}, '0');
+                    slideTl.fromTo(iconTiny, {x: '-300%'}, {x: '0'}, '0');
+                    slideTl.fromTo(icons, {y: '200%'}, {y: '0'}, '-=0.5');
+
                     // faccio partire la camera quando entro nella pagina
                     CameraPreview.startCamera({
                         x: 0, 
@@ -44,6 +63,8 @@ function onDeviceReady() {
                         tapFocus: true,
                         storeToFile: false,
                     });
+
+
                 },
                 afterEnter(){
                     // console.log(location.pathname);
@@ -86,6 +107,7 @@ function onDeviceReady() {
 
                     function takePicture(){
                         photoTaked.src = '';
+
                         icons.classList.add('none');
                         iconMini.classList.add('none');
 
